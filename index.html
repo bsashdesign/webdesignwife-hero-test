@@ -137,7 +137,7 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
     <div class="hero__zoom" id="zoom"><video class="hero__video" id="video" src="hero-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline></video></div>
   </div>
   <div class="texts" id="texts" aria-hidden="true">
-    <p class="text text--owner" id="ask"></p>
+    <p class="text text--owner" id="ask"><small></small><span></span></p>
     <p class="text text--ben" id="reply"><small>Ben</small><span></span></p>
     <p class="text text--ben text--typing" id="typing"><i></i><i></i><i></i></p>
     <p class="text text--owner text--typing" id="owner-typing"><i></i><i></i><i></i></p>
@@ -168,15 +168,15 @@ const LINES = [
 ];
 
 // Each person in the loop (about 10 s each, Ben 2026-10-25): when they're on screen (seconds in the reel), where their
-// phone is in the frame (0–1), their colour, their business, what they text, and when (seconds after they appear):
+// phone is in the frame (0–1), their colour, their business, who they are (on their text, Ben 2026-11-07), what they text, and when (seconds after they appear):
 // owner's typing dots from the start, their text, Ben's typing dots, Ben's reply. The first person keeps Ben's slower
 // timing (the visitor is still taking in the site); the second and third come in sooner (Ben, 2026-10-26).
 const PEOPLE = [
-  { from: 0.0, to: 10.38, phone: [0.55, 0.61], color: "#4a3be8", note: "for pharmacies",
+  { from: 0.0, to: 10.38, phone: [0.55, 0.61], color: "#4a3be8", note: "for pharmacies", who: "Pharmacist",
     ask: "Can you add\nflu shot hours?", reply: "On it.", at: { ask: 4, typing: 6, reply: 8 } },
-  { from: 10.98, to: 21.37, phone: [0.545, 0.61], color: "#e2378a", note: "for cafés",
+  { from: 10.98, to: 21.37, phone: [0.545, 0.61], color: "#e2378a", note: "for cafés", who: "Café owner",
     ask: "Closing early tonight.", reply: "Got it,\nwill update the site.", at: { ask: 2, typing: 3.5, reply: 5 } },
-  { from: 21.97, to: 32.35, phone: [0.57, 0.64], color: "#169b4f", note: "for electricians",
+  { from: 21.97, to: 32.35, phone: [0.57, 0.64], color: "#169b4f", note: "for electricians", who: "Electrician",
     ask: "Can you add\nSaturday hours?", reply: "Will do.", at: { ask: 2, typing: 3.5, reply: 5 } },
 ];
 const MORE = " + 17 more"; // the other kinds of business on businesses.html (18 in all)
@@ -302,7 +302,7 @@ function show(t) {
   if (i !== current) {
     current = i;
     anchor = null;
-    ask.textContent = p.ask; reply.lastChild.textContent = p.reply;
+    ask.firstChild.textContent = p.who; ask.lastChild.textContent = p.ask; reply.lastChild.textContent = p.reply;
     noteText.textContent = p.note + MORE; note.href = ALL_BUSINESSES;
     texts.style.setProperty("--owner", p.color);
   }
