@@ -35,6 +35,7 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 .promo { position: relative; z-index: 3; height: var(--promo-h); display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 var(--gutter); background: var(--lime); color: var(--ink); font-weight: 600; font-size: .98rem; white-space: nowrap; overflow: hidden; }
 .promo__tag { font-family: var(--display); font-size: .7rem; font-weight: 700; letter-spacing: .08em; padding: 5px 9px; border: 2px solid var(--ink); border-radius: 999px; background: var(--pink); }
 .promo__spot { display: inline-flex; align-items: center; gap: 7px; font-weight: 800; }
+.promo__offer { text-wrap: balance; } /* when it wraps on phones, never one word alone on a line */
 .promo__spot i { width: 8px; height: 8px; border-radius: 50%; background: #00933c; animation: pulse 1.6s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,147,60,.55); } 50% { box-shadow: 0 0 0 6px rgba(0,147,60,0); } }
 .no-promo .promo { display: none; }
@@ -129,7 +130,7 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 </style>
 </head>
 <body>
-<p class="promo" id="promo"><span class="promo__tag">PROMO</span><span class="promo__spot"><i aria-hidden="true"></i>1 spot open</span><span>Free setup and $0/mo for your first 3 months, upon acceptance.</span></p>
+<p class="promo" id="promo"><span class="promo__tag">PROMO</span><span class="promo__spot"><i aria-hidden="true"></i>1 spot open</span><span class="promo__offer">Free setup and $0/mo for your first 3 months, upon acceptance.</span></p>
 <section class="hero">
   <div class="hero__frame" id="frame">
     <div class="hero__zoom" id="zoom"><video class="hero__video" id="video" src="hero-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline></video></div>
