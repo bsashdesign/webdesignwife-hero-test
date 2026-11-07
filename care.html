@@ -401,7 +401,8 @@ p { text-wrap: pretty; }
 
 /* a message that carries an update */
 .attach-msg { justify-self: start; width: min(100%, 300px); padding: 12px; border-radius: 18px 18px 18px 6px; background: #ebe7de; color: var(--ink); }
-.care-concept .attach-msg__head { color: var(--ink); }
+.care-concept .attach-msg__head, .care-concept .gcard__name, .care-concept .wcard__name { color: var(--ink); margin-top: 0; }
+.care-concept .gcard__meta { color: rgba(14,14,14,.65); margin-top: 2px; } .care-concept .wcard__k { color: rgba(14,14,14,.55); }
 .attach-msg__head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: .92rem; margin-bottom: 10px; }
 .attach-msg__head .tick { width: 1.15em; height: 1.15em; padding: 3px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1.5px var(--ink); }
 .attach-msg__head span { flex-basis: 100%; color: rgba(14,14,14,.6); font-size: .85rem; }
