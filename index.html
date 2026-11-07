@@ -36,7 +36,6 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 .promo__tag { font-family: var(--display); font-size: .7rem; font-weight: 700; letter-spacing: .08em; padding: 5px 9px; border: 2px solid var(--ink); border-radius: 999px; background: var(--pink); }
 .promo__spot { display: inline-flex; align-items: center; gap: 7px; font-weight: 800; }
 .promo__spot i { width: 8px; height: 8px; border-radius: 50%; background: #00933c; animation: pulse 1.6s ease-in-out infinite; }
-.promo__regular { opacity: .7; font-weight: 500; }
 @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,147,60,.55); } 50% { box-shadow: 0 0 0 6px rgba(0,147,60,0); } }
 .no-promo .promo { display: none; }
 .no-promo { --promo-h: 0px; }
@@ -106,7 +105,6 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 @media (max-width: 760px) {
   :root { --promo-h: 40px; }
   .promo { height: auto; min-height: var(--promo-h); padding: 8px 16px; font-size: .84rem; gap: 4px 8px; justify-content: flex-start; flex-wrap: wrap; white-space: normal; }
-  .promo__regular { display: none; }
   .hero { height: auto; min-height: 0; overflow: visible; }
   .hero__frame { position: relative; inset: auto; aspect-ratio: 1 / 1; overflow: hidden; }
   .hero__zoom { background-position: 50% 50%; }
@@ -131,7 +129,7 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 </style>
 </head>
 <body>
-<p class="promo" id="promo"><span class="promo__tag">PROMO</span><span>Next applicant: $0 setup and $0/mo, upon acceptance.</span><span class="promo__spot"><i aria-hidden="true"></i>1 spot open</span><span class="promo__regular">Regular $199 setup + $99/mo</span></p>
+<p class="promo" id="promo"><span class="promo__tag">PROMO</span><span class="promo__spot"><i aria-hidden="true"></i>1 spot open</span><span>Free setup and $0/mo for your first 3 months, upon acceptance.</span></p>
 <section class="hero">
   <div class="hero__frame" id="frame">
     <div class="hero__zoom" id="zoom"><video class="hero__video" id="video" src="hero-reel.mp4" poster="poster.jpg" autoplay muted loop playsinline></video></div>
@@ -157,8 +155,10 @@ html, body { background: var(--ink); color: var(--paper); font-family: var(--bod
 <nav class="controls" id="controls" aria-label="Headline options"></nav>
 
 <script>
-// One idea, six ways (Ben, 2026-10-25): a website that lets them focus on running their business. One short sentence each.
+// Ben's headline first (2026-11-07), shown by default; then one idea, six ways (Ben, 2026-10-25): a website that lets
+// them focus on running their business. One short sentence each. "Google Maps" never splits across two lines.
 const LINES = [
+  { title: "Your website and Google\u00a0Maps, handled.", sub: "Text me a change and it's live the next business day. Your Google\u00a0Maps listing stays current too." },
   { title: "You run the business, I'll handle the website.", sub: "Text me any change and it's live by the next business day." },
   { title: "Focus on your business, not your website.", sub: "Text a change and it's live the next business day. Hosting, backups and Google are covered." },
   { title: "Your website, handled, so you can run your business.", sub: "Text me a change and it's done by the next business day." },
@@ -189,7 +189,7 @@ const TILT = "rotateY(16deg) rotateX(6deg)", SLIDE = 44; // tilted the other way
 const ZOOM = { desktop: { from: 1.18, to: 1.55, at: [0.62, 0.6], end: [0.6, 0.6] },
                phone: { from: 1, to: 1.25, at: null } }; // phones: no shift, a gentle zoom on the phone where it is
 
-const LINE_KEYS = ["1", "2", "3", "4", "5", "6"]; // left hand: 1–6 pick the line, P shows or hides the promotion, H hides this bar
+const LINE_KEYS = ["1", "2", "3", "4", "5", "6", "7"]; // left hand: 1–7 pick the line, P shows or hides the promotion, H hides this bar
 let line = 0;
 const video = document.getElementById("video"), frame = document.getElementById("frame"), zoomEl = document.getElementById("zoom");
 const texts = document.getElementById("texts"), ask = document.getElementById("ask"), reply = document.getElementById("reply");
